@@ -17,13 +17,14 @@ public class DBColumn {
 	public DataType[] types;
 	public boolean eof = false;
 
-	public DBColumn(Object[] fields, Da type){
+	public DBColumn(Object[] fields, DataType type){
 		this.fields = fields;
 		this.types = types;
 	}
 
 	public DBColumn(){
 		this.eof = true;
+	}
 
 	public Integer[] getAsInteger() {
 		Integer[] ret = new Integer[this.fields.length];
@@ -61,4 +62,4 @@ public class DBColumn {
 		return ret;
 	}
 }
-}
+

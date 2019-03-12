@@ -22,8 +22,8 @@ public class Main {
 		schema = new DataType[] { DataType.INT, DataType.INT, DataType.INT, DataType.INT, DataType.INT, DataType.INT,
 				DataType.INT, DataType.INT, DataType.INT, DataType.INT };
 
-		RowStore rowstore = new RowStore(orderSchema, "input/orders_small.csv", "\\|");
-		rowstore.load();
+		//RowStore rowstore = new RowStore(orderSchema, "input/orders_small.csv", "\\|");
+		//rowstore.load();
 
 		// PAXStore paxstore = new PAXStore(orderSchema, "input/orders_small.csv", "\\|", 3);
 		// paxstore.load();
