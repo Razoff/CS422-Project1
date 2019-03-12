@@ -9,6 +9,9 @@ import ch.epfl.dias.store.column.DBColumn;
 import ch.epfl.dias.store.row.DBTuple;
 import ch.epfl.dias.store.row.RowStore;
 
+import java.io.IOException;
+import java.util.Arrays;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -22,8 +25,29 @@ public class Main {
 		schema = new DataType[] { DataType.INT, DataType.INT, DataType.INT, DataType.INT, DataType.INT, DataType.INT,
 				DataType.INT, DataType.INT, DataType.INT, DataType.INT };
 
-		//RowStore rowstore = new RowStore(orderSchema, "input/orders_small.csv", "\\|");
-		//rowstore.load();
+		RowStore rowstore = new RowStore(orderSchema, "input/orders_small.csv", "\\|");
+		try {
+			rowstore.load();
+		} catch (IOException e){
+			System.out.println(e);
+		}
+
+		// MY CODE
+
+		System.out.println(rowstore.getRow(3));
+
+		ColumnStore colstore = new ColumnStore(orderSchema, "input/orders_small.csv", "\\|");
+		try{
+			colstore.load();
+		}catch (IOException e){
+			System.out.println(e);
+		}
+
+		int[] sa = new int[]{4};
+
+		System.out.println(colstore.getColumns(sa)[0]);
+
+		// END OF MY CODE
 
 		// PAXStore paxstore = new PAXStore(orderSchema, "input/orders_small.csv", "\\|", 3);
 		// paxstore.load();
