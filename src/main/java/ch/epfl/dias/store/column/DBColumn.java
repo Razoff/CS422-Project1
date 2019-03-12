@@ -13,10 +13,52 @@ public class DBColumn {
 	different getAs'bla' methods
 	 */
 
-	// TODO: Implement
-	
-	public Integer[] getAsInteger() {
-		// TODO: Implement
-		return null;
+	public Object[] fields;
+	public DataType[] types;
+	public boolean eof = false;
+
+	public DBColumn(Object[] fields, Da type){
+		this.fields = fields;
+		this.types = types;
 	}
+
+	public DBColumn(){
+		this.eof = true;
+
+	public Integer[] getAsInteger() {
+		Integer[] ret = new Integer[this.fields.length];
+
+		for(int i = 0; i < this.fields.length; i++){
+			ret[i] = (Integer)this.fields[i];
+		}
+		return ret;
+	}
+
+	public Double[] getAsDouble() {
+		Double[] ret = new Double[this.fields.length];
+
+		for(int i = 0 ; i < this.fields.length; i++){
+			ret[i] = (Double)this.fields[i];
+		}
+		return ret;
+	}
+
+	public Boolean[] getAsBoolean() {
+		Boolean[] ret = new Boolean[this.fields.length];
+
+		for(int i = 0; i < this.fields.length; i++){
+			ret[i] = (Boolean) this.fields[i];
+		}
+		return ret;
+	}
+
+	public String[] getAsString() {
+		String[] ret = new String[this.fields.length];
+
+		for(int i = 0; i < this.fields.length; i++){
+			ret[i] = (String)this.fields[i];
+		}
+		return ret;
+	}
+}
 }
