@@ -2,63 +2,69 @@ package ch.epfl.dias.store.column;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import ch.epfl.dias.store.DataType;
 
 public class DBColumn {
-	/*
-	This will besaically be a list of object of any type
-	Maybe it will also hold the type of the column who knows
-	Probably will use the same logic as row stor and have four
-	different getAs'bla' methods
-	 */
 
-	public Object[] fields;
-	public DataType[] types;
-	public boolean eof = false;
-
-	public DBColumn(Object[] fields, DataType type){
-		this.fields = fields;
-		this.types = types;
-	}
+	private List<Object> col_data;
 
 	public DBColumn(){
-		this.eof = true;
+		this.col_data = new ArrayList<>();
 	}
 
-	public Integer[] getAsInteger() {
-		Integer[] ret = new Integer[this.fields.length];
+	public void add_elem(Object elem){
+		this.col_data.add(elem);
+	}
 
-		for(int i = 0; i < this.fields.length; i++){
-			ret[i] = (Integer)this.fields[i];
+
+	public Integer[] getAsInteger() {
+		Integer[] ret = new Integer[this.col_data.size()];
+
+		for(int i = 0; i < this.col_data.size(); i++){
+			ret[i] = Integer.parseInt((String)this.col_data.get(i));
 		}
 		return ret;
 	}
 
 	public Double[] getAsDouble() {
-		Double[] ret = new Double[this.fields.length];
+		Double[] ret = new Double[this.col_data.size()];
 
-		for(int i = 0 ; i < this.fields.length; i++){
-			ret[i] = (Double)this.fields[i];
+		for(int i = 0 ; i < this.col_data.size(); i++){
+			ret[i] = Double.parseDouble((String)this.col_data.get(i));
 		}
 		return ret;
 	}
 
 	public Boolean[] getAsBoolean() {
-		Boolean[] ret = new Boolean[this.fields.length];
+		Boolean[] ret = new Boolean[this.col_data.size()];
 
-		for(int i = 0; i < this.fields.length; i++){
-			ret[i] = (Boolean) this.fields[i];
+		for(int i = 0; i < this.col_data.size(); i++){
+			ret[i] = Boolean.parseBoolean((String)this.col_data.get(i));
 		}
 		return ret;
 	}
 
 	public String[] getAsString() {
-		String[] ret = new String[this.fields.length];
+		String[] ret = new String[this.col_data.size()];
 
-		for(int i = 0; i < this.fields.length; i++){
-			ret[i] = (String)this.fields[i];
+		for(int i = 0; i < this.col_data.size(); i++){
+			ret[i] = (String)this.col_data.get(i);
 		}
+		return ret;
+	}
+
+	@Override
+	public String toString() {
+		String ret = "[";
+
+		for(int i=0; i < this.col_data.size(); i++){
+			ret += String.valueOf(this.col_data.get(i));
+			ret += ", ";
+		}
+
+		ret += "]\n";
 		return ret;
 	}
 }

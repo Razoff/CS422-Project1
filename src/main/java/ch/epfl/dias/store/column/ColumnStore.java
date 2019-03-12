@@ -14,7 +14,6 @@ import ch.epfl.dias.store.Store;
 
 public class ColumnStore extends Store {
 
-	// TODO: Add required structures
 	private DataType[] schema;
 	private String filename;
 	private String delimiter;
@@ -36,41 +35,30 @@ public class ColumnStore extends Store {
 	@Override
 	public void load() throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(this.filename));
+		this.col_data = new DBColumn[this.schema.length];
+
+		// Init array
+		for (int i=0; i < col_data.length; i++){
+			col_data[i] = new DBColumn();
+		}
 
 		for (String line = reader.readLine(); line != null; line = reader.readLine()) {
 			String[] tuple = line.split(this.delimiter);
 
 			for (int i = 0; i < tuple.length; i++){
-				// TODO Implement columns first
+				this.col_data[i].add_elem(tuple[i]);
 			}
 		}
 	}
 
 	@Override
 	public DBColumn[] getColumns(int[] columnsToGet) {
-		// TODO: Implement
-		return null;
-	}
-
-	private Object elemParser(String elem, DataType type) throws IOException{
-		Object ret = null;
-		switch (type){
-			case INT:
-				ret = Integer.parseInt(elem);
-				break;
-			case DOUBLE:
-				ret = Double.parseDouble(elem);
-				break;
-			case STRING:
-				ret = elem; // Same type
-				break;
-			case BOOLEAN:
-				ret = Boolean.parseBoolean(elem);
-				break;
-			default:
-				throw new IOException("Error");
+		DBColumn[] ret = new DBColumn[columnsToGet.length];
+		for(int i=0; i < columnsToGet.length; i++){
+			ret[i] = this.col_data[columnsToGet[i]];
 		}
 
 		return ret;
 	}
+
 }
