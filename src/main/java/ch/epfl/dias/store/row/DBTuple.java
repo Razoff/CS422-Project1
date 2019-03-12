@@ -40,4 +40,18 @@ public class DBTuple {
 	public String getFieldAsString(int fieldNo) {
 		return (String) fields[fieldNo];
 	}
+
+	@Override
+	public String toString() {
+		String ret = "[";
+
+		for(int i=0; i < this.fields.length ; i++){
+			ret += String.valueOf(this.fields[i]);
+			ret += ", ";
+		}
+
+		ret += "]\n";
+
+		return ret;
+	}
 }
