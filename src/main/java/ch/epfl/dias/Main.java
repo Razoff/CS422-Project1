@@ -34,7 +34,7 @@ public class Main {
 
 		// MY CODE
 
-		System.out.println(rowstore.getRow(3));
+		//System.out.println(rowstore.getRow(3));
 
 		ColumnStore colstore = new ColumnStore(orderSchema, "input/orders_small.csv", "\\|");
 		try{
@@ -45,13 +45,17 @@ public class Main {
 
 		int[] sa = new int[]{4};
 
-		System.out.println(colstore.getColumns(sa)[0]);
+		//System.out.println(colstore.getColumns(sa)[0]);
 
 		// END OF MY CODE
 
-		// PAXStore paxstore = new PAXStore(orderSchema, "input/orders_small.csv", "\\|", 3);
-		// paxstore.load();
-		 
+        PAXStore paxstore = new PAXStore(orderSchema, "input/orders_small.csv", "\\|", 3);
+        try{
+            paxstore.load();
+        }catch (IOException e){
+            System.out.println(e);
+        }
+
 		// ch.epfl.dias.ops.volcano.Scan scan = new ch.epfl.dias.ops.volcano.Scan(rowstore);
 		// DBTuple currentTuple = scan.next();
 		// while (!currentTuple.eof) {
