@@ -44,6 +44,9 @@ public class DBPAXpage {
         }
     }
 
+    public Object[] getPax_data() {
+        return pax_data;
+    }
 
     @Override
     public String toString() {

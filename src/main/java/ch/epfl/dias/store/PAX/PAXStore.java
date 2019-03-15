@@ -19,7 +19,6 @@ public class PAXStore extends Store {
 	private String filename;
 	private String delimiter;
 	private int tuplesPerPage;
-	private int elemPerTuple;
 	private List<DBPAXpage> pax_data = new ArrayList<>();
 
 
@@ -28,25 +27,55 @@ public class PAXStore extends Store {
 		this.filename = filename;
 		this.delimiter = delimiter;
 		this.tuplesPerPage = tuplesPerPage;
-		this.elemPerTuple = schema.length;
 	}
 
 	@Override
 	public void load() throws IOException {
-		BufferedReader reader = new BufferedReader(new FileReader(this.filename));
-		DBPAXpage paax = new DBPAXpage(schema, 11);
-		Object[] data = new Object[schema.length];
-		for (String line = reader.readLine(); line != null; line = reader.readLine()) {
-			data = line.split(this.delimiter);
-			paax.add_elem(data);
+		if(pax_data.isEmpty()){
+			add_page();
 		}
 
-		System.out.println(paax);
+		BufferedReader reader = new BufferedReader(new FileReader(this.filename));
+		Object[] data = new Object[schema.length];
+		int page_no = 0;
+
+		for (String line = reader.readLine(); line != null; line = reader.readLine()) {
+			data = line.split(this.delimiter);
+			if(!this.pax_data.get(page_no).add_elem(data)){
+				add_page();
+				page_no++;
+				this.pax_data.get(page_no).add_elem(data);
+			}
+		}
+
+		for(int i = 0 ; i < this.pax_data.size() ; i++){
+			System.out.println(this.pax_data.get(i));
+		}
+	}
+
+	private void add_page(){
+		this.pax_data.add(new DBPAXpage(this.schema, this.tuplesPerPage));
 	}
 
 	@Override
 	public DBTuple getRow(int rownumber) {
-		// TODO: Implement
-		return null;
+		int page = rownumber / this.tuplesPerPage; // Integer division
+		int offset = rownumber % this.tuplesPerPage ; // Arrays start at 0
+
+		/*if(offset == -1){
+			page--;
+			offset = this.tuplesPerPage- 1 ;
+		}*/
+
+		//System.out.println(this.pax_data.get(page));
+		//System.out.println(offset);
+
+		Object[] data = new Object[this.schema.length];
+
+		for(int i=0; i<this.schema.length; i++){
+			data[i] = this.pax_data.get(page).getPax_data()[offset + i * this.tuplesPerPage];
+		}
+
+		return new DBTuple(data, this.schema);
 	}
 }
