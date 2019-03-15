@@ -34,7 +34,7 @@ public class Main {
 
 		// MY CODE
 
-		//System.out.println(rowstore.getRow(3));
+		//System.out.println(rowstore.getRow(0));
 
 		ColumnStore colstore = new ColumnStore(orderSchema, "input/orders_small.csv", "\\|");
 		try{
@@ -55,6 +55,12 @@ public class Main {
         }catch (IOException e){
             System.out.println(e);
         }
+
+        // MY CODE
+
+		//System.out.println(paxstore.getRow(3));
+
+		// END OF MY CODE
 
 		// ch.epfl.dias.ops.volcano.Scan scan = new ch.epfl.dias.ops.volcano.Scan(rowstore);
 		// DBTuple currentTuple = scan.next();
