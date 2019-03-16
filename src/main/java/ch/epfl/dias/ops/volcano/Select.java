@@ -5,25 +5,68 @@ import ch.epfl.dias.store.row.DBTuple;
 
 public class Select implements VolcanoOperator {
 
-	// TODO: Add required structures
+	private VolcanoOperator child;
+	private BinaryOp op;
+	private int fieldNo;
+	private int value;
 
 	public Select(VolcanoOperator child, BinaryOp op, int fieldNo, int value) {
-		// TODO: Implement
+		this.child = child;
+		this.op = op;
+		this.fieldNo = fieldNo;
+		this.value = value;
 	}
 
 	@Override
 	public void open() {
-		// TODO: Implement
+		this.child.open();
 	}
 
 	@Override
 	public DBTuple next() {
-		// TODO: Implement
-		return null;
+		while(true){
+			DBTuple elem = this.child.next();
+			if (elem.eof){
+				return elem;
+			}else{
+				switch (this.op) {
+					case EQ:
+						if(elem.getFieldAsInt(this.fieldNo) == this.value){
+							return elem;
+						}
+						break;
+					case GE:
+						if(elem.getFieldAsInt(this.fieldNo) >= this.value){
+							return elem;
+						}
+						break;
+					case GT:
+						if(elem.getFieldAsInt(this.fieldNo) > this.value){
+							return elem;
+						}
+						break;
+					case LE:
+						if(elem.getFieldAsInt(this.fieldNo) <= this.value){
+							return elem;
+						}
+						break;
+					case LT:
+						if(elem.getFieldAsInt(this.fieldNo) < this.value){
+							return elem;
+						}
+						break;
+					case NE:
+						if(elem.getFieldAsInt(this.fieldNo) != this.value){
+							return elem;
+						}
+						break;
+				}
+			}
+		}
 	}
 
 	@Override
 	public void close() {
-		// TODO: Implement
+		this.child.close();
 	}
 }
