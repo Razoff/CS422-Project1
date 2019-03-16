@@ -62,18 +62,22 @@ public class Main {
 
 		// END OF MY CODE
 
-		// ch.epfl.dias.ops.volcano.Scan scan = new ch.epfl.dias.ops.volcano.Scan(rowstore);
-		// DBTuple currentTuple = scan.next();
-		// while (!currentTuple.eof) {
-		// 	System.out.println(currentTuple.getFieldAsInt(1));
-		// 	currentTuple = scan.next();
-		// }
+		ch.epfl.dias.ops.volcano.Scan scan = new ch.epfl.dias.ops.volcano.Scan(rowstore);
+		DBTuple currentTuple = scan.next();
+		while (!currentTuple.eof) {
+		 	System.out.println(currentTuple.getFieldAsInt(1));
+			currentTuple = scan.next();
+		}
 
-		// ColumnStore columnstoreData = new ColumnStore(schema, "input/data.csv", ",");
-		// columnstoreData.load();
-		//
-		// ch.epfl.dias.ops.block.Scan scan = new ch.epfl.dias.ops.block.Scan(columnstoreData);
-		// ch.epfl.dias.ops.block.Select sel = new ch.epfl.dias.ops.block.Select(scan, BinaryOp.EQ, 3, 6);
+		ColumnStore columnstoreData = new ColumnStore(schema, "input/data.csv", ",");
+		try {
+			columnstoreData.load();
+		}catch (IOException e){
+			System.out.println(e);
+		}
+
+		//ch.epfl.dias.ops.block.Scan scan = new ch.epfl.dias.ops.block.Scan(columnstoreData);
+		//ch.epfl.dias.ops.block.Select sel = new ch.epfl.dias.ops.block.Select(scan, BinaryOp.EQ, 3, 6);
 		// ch.epfl.dias.ops.block.ProjectAggregate agg = new ch.epfl.dias.ops.block.ProjectAggregate(sel, Aggregate.COUNT, DataType.INT, 2);
 		// DBColumn[] result = agg.execute();
 		// int output = result[0].getAsInteger()[0];
