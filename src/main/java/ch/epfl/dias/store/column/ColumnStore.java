@@ -61,4 +61,15 @@ public class ColumnStore extends Store {
 		return ret;
 	}
 
+	public DataType[] getSchema() {
+		return schema;
+	}
+
+	public DBColumn[] getCol_data() {
+		return col_data;
+	}
+
+	public boolean isLateMaterialization() {
+		return lateMaterialization;
+	}
 }
