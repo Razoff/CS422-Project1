@@ -41,6 +41,10 @@ public class DBTuple {
 		return (String) fields[fieldNo];
 	}
 
+	public String getFieldAsCastString(int fieldNo) {
+		return fields[fieldNo].toString();
+	}
+
 	@Override
 	public String toString() {
 		String ret = "[";
