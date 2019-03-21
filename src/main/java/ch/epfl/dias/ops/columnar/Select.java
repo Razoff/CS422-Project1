@@ -25,9 +25,15 @@ public class Select implements ColumnarOperator {
 
 	@Override
 	public DBColumn[] execute() {
+
 		DBColumn[] child_comp = this.child.execute();
 		DBColumn elem = child_comp[this.fieldNo];
-		Integer[] column_int = elem.getAsInteger();
+		Integer[] column_int;
+		if(elem.isLateMat()){
+			column_int = elem.lazyEval().getAsInteger();
+		}else {
+			column_int = elem.getAsInteger();
+		}
 
 		switch (this.op){
 			case EQ:
@@ -73,18 +79,41 @@ public class Select implements ColumnarOperator {
 				}
 				break;
 		}
-		return reconstruct(child_comp);
+		return reconstruct(child_comp, column_int.length);
 	}
 
-	private DBColumn[] reconstruct(DBColumn[] current_state){
-		DBColumn[] ret = new DBColumn[current_state.length];
-		for(int i=0; i<current_state.length;i++){
-			ret[i] = new DBColumn(current_state[i].getDataType());
-			Object[] elems = current_state[i].getAsObject();
-			for (int o: this.kept_ids){
-				ret[i].add_elem(elems[o]);
+	private DBColumn[] reconstruct(DBColumn[] current_state, int nbIndices){
+		/*
+		 * Now this is tricky we look at which indexes in the availIDs we keep
+		 * but since other operations might have happenend before
+		 *  we want to match the position in the array not the value itself
+		 *  everytime we match we have to offset one bit
+		 *  EX two columsn with three element c1 = {0,1,2} (due to lazy eval) c2 {1,5,7} (from previous exec
+		 *  let's say that only 1 match -> 0 is not in [1] -> remove c1[0-0] c2[0-0] offset = 1
+		 *  1 match do nothing
+		 *  2 is not in [1] remove c1[2-1] c2 [2-1] -> final state c1={1} c2={5}
+		 */
+		if (current_state[this.fieldNo].isLateMat()){
+			int offset = 0;
+			for(int i = 0; i < nbIndices; i++){
+				if (!this.kept_ids.contains(i)){
+					for(int j = 0; j < current_state.length; j++){
+						current_state[j].availIDs.remove(i - offset);
+					}
+					offset--;
+				}
 			}
+			return current_state;
+		}else {
+			DBColumn[] ret = new DBColumn[current_state.length];
+			for (int i = 0; i < current_state.length; i++) {
+				ret[i] = new DBColumn(current_state[i].getDataType(), false);
+				Object[] elems = current_state[i].getAsObject();
+				for (int o : this.kept_ids) {
+					ret[i].add_elem(elems[o]);
+				}
+			}
+			return ret;
 		}
-		return ret;
 	}
 }

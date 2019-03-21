@@ -17,7 +17,7 @@ public class Project implements ColumnarOperator {
 		DBColumn[] elem = this.child.execute();
 		DBColumn[] ret = new DBColumn[this.columns.length];
 
-		for(int i=0; i < this.columns.length; i++){
+		for (int i = 0; i < this.columns.length; i++) {
 			ret[i] = elem[this.columns[i]];
 		}
 		return ret;

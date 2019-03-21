@@ -21,9 +21,14 @@ public class ProjectAggregate implements ColumnarOperator {
 	@Override
 	public DBColumn[] execute() {
 		DBColumn[] curr_exec = this.child.execute();
-		DBColumn column = curr_exec[this.fieldNo];
-		DBColumn double_ret = new DBColumn(DataType.DOUBLE);
-		DBColumn int_ret = new DBColumn(DataType.INT);
+		DBColumn column;
+		if(curr_exec[0].isLateMat()){ // lazy eval to get the right stats
+			column = curr_exec[this.fieldNo].lazyEval();
+		}else{
+			column = curr_exec[this.fieldNo];
+		}
+		DBColumn double_ret = new DBColumn(DataType.DOUBLE, false);
+		DBColumn int_ret = new DBColumn(DataType.INT, false);
 		Double[] stats = column.getStats(); // {min, max, sum}
 		switch (this.agg){
 			case SUM: // depens
