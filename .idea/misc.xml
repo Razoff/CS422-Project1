@@ -8,17 +8,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_10" project-jdk-name="10" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
-  </component>
-  <component name="libraryTable">
-    <library name="java">
-      <CLASSES />
-      <JAVADOC />
-      <SOURCES>
-        <root url="file://$PROJECT_DIR$/../../../lll/src/main/java" />
-        <root url="file://$PROJECT_DIR$/../../../lll/src/test/java" />
-      </SOURCES>
-    </library>
   </component>
 </project>
