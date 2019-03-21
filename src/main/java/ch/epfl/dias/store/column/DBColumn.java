@@ -13,18 +13,26 @@ public class DBColumn {
 
 	private List<Object> col_data;
 	private DataType dataType;
+	public List<Integer> availIDs; // USE ONLY WITH LATE MAT
+	private int last_id; // USE ONLY FOR LATE MAT
+	private boolean lateMat;
 	public boolean eof;
 
-	public DBColumn(DataType dataType){
+	public DBColumn(DataType dataType, boolean lateMat){
 		this.dataType = dataType;
 		this.col_data = new ArrayList<>();
 		this.eof = false;
+		this.lateMat = lateMat;
+		this.availIDs = new ArrayList<>();
+		this.last_id = 0;
 	}
 
 	public DBColumn(){this.eof = true;}
 
 	public void add_elem(Object elem){
 		this.col_data.add(elem);
+		this.availIDs.add(this.last_id);
+		this.last_id++;
 	}
 
 	public Integer[] getAsInteger() {
@@ -84,6 +92,10 @@ public class DBColumn {
 		return col_data;
 	}
 
+	public boolean isLateMat() {
+		return lateMat;
+	}
+
 	public Double[] getStats(){
 		Double[] ret = new Double[3]; // {Min, Max, Sum}
 		switch (this.dataType) {
@@ -117,6 +129,14 @@ public class DBColumn {
 		}
 		return ret;
 
+	}
+
+	public DBColumn lazyEval(){ // Use only on late mat
+		DBColumn ret = new DBColumn(this.dataType, true);
+		for(int indice : this.availIDs){
+			ret.add_elem(this.col_data.get(indice));
+		}
+		return ret;
 	}
 
 	@Override

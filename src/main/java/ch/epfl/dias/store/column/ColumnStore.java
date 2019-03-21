@@ -39,7 +39,7 @@ public class ColumnStore extends Store {
 
 		// Init array
 		for (int i=0; i < col_data.length; i++){
-			col_data[i] = new DBColumn(this.schema[i]);
+			col_data[i] = new DBColumn(this.schema[i], this.lateMaterialization);
 		}
 
 		for (String line = reader.readLine(); line != null; line = reader.readLine()) {
