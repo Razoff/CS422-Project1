@@ -17,7 +17,6 @@ public class Scan implements VolcanoOperator {
 
 	@Override
 	public void open() {
-		// TODO: Implement
 		// I am not sure it supposed to do anything
 		this.current_row = 0;
 	}
@@ -35,7 +34,6 @@ public class Scan implements VolcanoOperator {
 
 	@Override
 	public void close() {
-		// TODO: Implement
 		// I am not sure it is supposed to do anything
 	}
 }

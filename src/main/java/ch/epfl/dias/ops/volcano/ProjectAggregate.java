@@ -29,12 +29,12 @@ public class ProjectAggregate implements VolcanoOperator {
 		double ret = 0; // Double by default parsed if needed before return
 		DBTuple elem;
 		switch (this.agg){
-			case COUNT:
+			case COUNT: // Int
 				while(!this.child.next().eof){
 					ret++;
 				}
 				return new DBTuple(new Object[]{(int)ret}, new DataType[]{DataType.INT});
-			case AVG:
+			case AVG: // double
 				int count = 0;
 				while (true){
 					elem = this.child.next();
@@ -60,7 +60,7 @@ public class ProjectAggregate implements VolcanoOperator {
 								break;
 						}
 				}
-			case MAX:
+			case MAX: // depends
 				elem = this.child.next();
 				if (elem.eof){
 					return elem;
@@ -100,7 +100,7 @@ public class ProjectAggregate implements VolcanoOperator {
 						}
 					}
 				}
-			case MIN:
+			case MIN: // depends
 				elem = this.child.next();
 				if (elem.eof){
 					return elem;
@@ -140,7 +140,7 @@ public class ProjectAggregate implements VolcanoOperator {
 						}
 					}
 				}
-			case SUM:
+			case SUM: // depends
 				while (true){
 					elem = this.child.next();
 
