@@ -36,18 +36,18 @@ public class ColumnarTest {
 				DataType.DOUBLE, DataType.DOUBLE, DataType.DOUBLE, DataType.STRING, DataType.STRING, DataType.STRING,
 				DataType.STRING, DataType.STRING, DataType.STRING, DataType.STRING, DataType.STRING };
 
-		//columnstoreData = new ColumnStore(schema, "input/data.csv", ",");
-		columnstoreData = new ColumnStore(schema, "input/data.csv", ",", true);
+		columnstoreData = new ColumnStore(schema, "input/data.csv", ",");
+		//columnstoreData = new ColumnStore(schema, "input/data.csv", ",", true);
 
 		columnstoreData.load();
 
-		//columnstoreOrder = new ColumnStore(orderSchema, "input/orders_small.csv", "\\|");
-		columnstoreOrder = new ColumnStore(orderSchema, "input/orders_small.csv", "\\|",true);
+		columnstoreOrder = new ColumnStore(orderSchema, "input/orders_small.csv", "\\|");
+		//columnstoreOrder = new ColumnStore(orderSchema, "input/orders_small.csv", "\\|",true);
 
 		columnstoreOrder.load();
 
-		//columnstoreLineItem = new ColumnStore(lineitemSchema, "input/lineitem_small.csv", "\\|");
-		columnstoreLineItem = new ColumnStore(lineitemSchema, "input/lineitem_small.csv", "\\|", true);
+		columnstoreLineItem = new ColumnStore(lineitemSchema, "input/lineitem_small.csv", "\\|");
+		//columnstoreLineItem = new ColumnStore(lineitemSchema, "input/lineitem_small.csv", "\\|", true);
 
 		columnstoreLineItem.load();
 	}
