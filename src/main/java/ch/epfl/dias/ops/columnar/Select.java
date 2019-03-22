@@ -84,14 +84,15 @@ public class Select implements ColumnarOperator {
 
 	private DBColumn[] reconstruct(DBColumn[] current_state, int nbIndices){
 		/*
-		 * Now this is tricky we look at which indexes in the availIDs we keep
+		 * Now this is tricky so here is how this unholy abomination works
+		 * we look at which indexes in the availIDs we keep
 		 * but since other operations might have happenend before
-		 *  we want to match the position in the array not the value itself
-		 *  everytime we match we have to offset one bit
-		 *  EX two columsn with three element c1 = {0,1,2} (due to lazy eval) c2 {1,5,7} (from previous exec
-		 *  let's say that only 1 match -> 0 is not in [1] -> remove c1[0-0] c2[0-0] offset = 1
-		 *  1 match do nothing
-		 *  2 is not in [1] remove c1[2-1] c2 [2-1] -> final state c1={1} c2={5}
+		 * we want to match the position in the array not the value itself
+		 * everytime we match we have to offset one bit
+		 * EX two columsn with three element c1 = {0,1,2} (due to lazy eval) c2 {1,5,7} (from previous exec
+		 * let's say that only 1 match -> 0 is not in [1] -> remove c1[0-0] c2[0-0] offset = 1
+		 * 1 match do nothing
+		 * 2 is not in [1] remove c1[2-1] c2 [2-1] -> final state c1={1} c2={5}
 		 */
 		if (current_state[this.fieldNo].isLateMat()){
 			int offset = 0;

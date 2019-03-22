@@ -76,6 +76,12 @@ public class Join implements ColumnarOperator {
 	private DBColumn[] reconstruct(DBColumn[] left, DBColumn[] right, List<Integer> leftIDs, List<Integer> rightIDs){
 		DBColumn[] ret = new DBColumn[left.length + right.length];
 		if (left[0].isLateMat() && right[0].isLateMat()){ // if only one is late mat then regular mat instead
+			/*
+			 * Here is how this unholy abomination works :
+			 * left/right IDs holds the ids to be merge together -> {0,0,0} {1,2,3}
+			 * We put those values in the "available IDs" of all left (repectively right) columns of the join
+			 * with respect of what ID they currently refer to in the availIds of each column
+			 */
 			List<Integer> leftNewIDs = new ArrayList<>();
 			List<Integer> rightNewIDs = new ArrayList<>();
 			for (int i=0; i<leftIDs.size(); i++){
@@ -84,24 +90,6 @@ public class Join implements ColumnarOperator {
 			for (int i=0; i<rightIDs.size(); i++){
 				rightNewIDs.add(right[this.rightFieldNo].availIDs.get(rightIDs.get(i)));
 			}
-			/*int offset = 0;
-			for(int i=0; i<left[this.leftFieldNo].getElemNumber(); i++){
-				if(!leftIDs.contains(i)){
-					for (int j=0; j<left.length; j++){
-						left[j].availIDs.remove(i+offset);
-					}
-					offset--;
-				}
-			}
-			offset = 0;
-			for(int i=0; i<right[this.rightFieldNo].getElemNumber(); i++){
-				if(!rightIDs.contains(i)){
-					for (int j=0; j<right.length; j++){
-						right[j].availIDs.remove(i+offset);
-					}
-					offset--;
-				}
-			}*/
 
 			for (int i = 0; i < left.length; i++) {
 				left[i].availIDs = leftNewIDs;
