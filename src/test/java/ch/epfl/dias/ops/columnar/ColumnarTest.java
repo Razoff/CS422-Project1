@@ -36,13 +36,19 @@ public class ColumnarTest {
 				DataType.DOUBLE, DataType.DOUBLE, DataType.DOUBLE, DataType.STRING, DataType.STRING, DataType.STRING,
 				DataType.STRING, DataType.STRING, DataType.STRING, DataType.STRING, DataType.STRING };
 
-		columnstoreData = new ColumnStore(schema, "input/data.csv", ",");
+		//columnstoreData = new ColumnStore(schema, "input/data.csv", ",");
+		columnstoreData = new ColumnStore(schema, "input/data.csv", ",", true);
+
 		columnstoreData.load();
 
-		columnstoreOrder = new ColumnStore(orderSchema, "input/orders_small.csv", "\\|");
+		//columnstoreOrder = new ColumnStore(orderSchema, "input/orders_small.csv", "\\|");
+		columnstoreOrder = new ColumnStore(orderSchema, "input/orders_small.csv", "\\|",true);
+
 		columnstoreOrder.load();
 
-		columnstoreLineItem = new ColumnStore(lineitemSchema, "input/lineitem_small.csv", "\\|");
+		//columnstoreLineItem = new ColumnStore(lineitemSchema, "input/lineitem_small.csv", "\\|");
+		columnstoreLineItem = new ColumnStore(lineitemSchema, "input/lineitem_small.csv", "\\|", true);
+
 		columnstoreLineItem.load();
 	}
 
@@ -58,8 +64,39 @@ public class ColumnarTest {
 
 		// This query should return only one result
 		int output = result[0].getAsInteger()[0];
+		double output_d;
 
+		assertTrue(output == 3); // [3,3,3] : AVG = 3, sum = 9 , min = 3 , max=3
+
+		// MINE
+/*
+		ch.epfl.dias.ops.columnar.ProjectAggregate avg = new ch.epfl.dias.ops.columnar.ProjectAggregate(sel, Aggregate.AVG,
+				DataType.DOUBLE, 2);
+
+		DBColumn[] result = avg.execute();
+		double output_d = result[0].getAsDouble()[0];
+		assertTrue(output_d == 3.0);
+
+		ch.epfl.dias.ops.columnar.ProjectAggregate sum = new ch.epfl.dias.ops.columnar.ProjectAggregate(sel, Aggregate.SUM,
+				DataType.INT, 2);
+
+		DBColumn[] result = sum.execute();
+		int output = result[0].getAsInteger()[0];
+		assertTrue(output == 9);
+
+		ch.epfl.dias.ops.columnar.ProjectAggregate max = new ch.epfl.dias.ops.columnar.ProjectAggregate(sel, Aggregate.MAX,
+				DataType.INT, 2);
+
+		DBColumn[] result = max.execute();
+		int output = result[0].getAsInteger()[0];
 		assertTrue(output == 3);
+
+		ch.epfl.dias.ops.columnar.ProjectAggregate min = new ch.epfl.dias.ops.columnar.ProjectAggregate(sel, Aggregate.MIN,
+				DataType.INT, 2);
+
+		DBColumn[] result = min.execute();
+		int output = result[0].getAsInteger()[0];
+		assertTrue(output == 3);*/
 	}
 
 	@Test
