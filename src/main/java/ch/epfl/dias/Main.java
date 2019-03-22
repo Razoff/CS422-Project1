@@ -109,45 +109,61 @@ public class Main {
 				DataType.STRING, DataType.STRING, DataType.STRING, DataType.STRING, DataType.STRING };
 
 		try {
+			System.out.println("Row store order load");
 			rowstoreOrder = new RowStore(orderSchema, "input/orders_big.csv", "\\|");
 			rowstoreOrder.load();
+			System.out.println("END");
 
+			System.out.println("Row store line_item load");
 			rowstoreLineItem = new RowStore(lineitemSchema, "input/lineitem_big.csv", "\\|");
 			rowstoreLineItem.load();
+			System.out.println("END");
 
 		}catch (Exception e){
 			System.out.println(e);
 		}finally {
+			System.out.println("Nullify row stores");
 			rowstoreOrder = null; // garbage collection
 			rowstoreLineItem = null;
 		}
 
 		try {
+			System.out.println("Pax store order load");
 			paxstoreOrder = new PAXStore(orderSchema, "input/orders_big.csv", "\\|", nb_order_tuple);
 			paxstoreOrder.load();
+			System.out.println("END");
 
+			System.out.println("Pax store line_item load");
 			paxstoreLineItem = new PAXStore(lineitemSchema, "input/lineitem_big.csv", "\\|", nb_line_tuple);
 			paxstoreLineItem.load();
+			System.out.println("END");
 
 		}catch (Exception e){
 			System.out.println(e);
 		}finally {
+			System.out.println("Nullify pax stores");
 			paxstoreOrder = null; // garbage collection
 			paxstoreLineItem = null;
 		}
 
 		try {
+			System.out.println("Col store order load");
 			columnstoreOrder = new ColumnStore(orderSchema, "input/orders_big.csv", "\\|");
 			columnstoreOrder.load();
+			System.out.println("END");
 
+			System.out.println("Col store line_item load");
 			columnstoreLineItem = new ColumnStore(lineitemSchema, "input/lineitem_big.csv", "\\|");
 			columnstoreLineItem.load();
+			System.out.println("END");
 
 		}catch (Exception e){
 			System.out.println(e);
 		}finally {
+			System.out.println("Nullify col stores");
 			columnstoreOrder = null; // garbage collection
 			columnstoreLineItem = null;
 		}
+		System.out.println("Finished");
 	}
 }
