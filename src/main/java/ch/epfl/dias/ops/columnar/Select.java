@@ -98,7 +98,7 @@ public class Select implements ColumnarOperator {
 			for(int i = 0; i < nbIndices; i++){
 				if (!this.kept_ids.contains(i)){
 					for(int j = 0; j < current_state.length; j++){
-						current_state[j].availIDs.remove(i - offset);
+						current_state[j].availIDs.remove(i + offset);
 					}
 					offset--;
 				}

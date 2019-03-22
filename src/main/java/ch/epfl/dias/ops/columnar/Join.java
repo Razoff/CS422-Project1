@@ -76,11 +76,19 @@ public class Join implements ColumnarOperator {
 	private DBColumn[] reconstruct(DBColumn[] left, DBColumn[] right, List<Integer> leftIDs, List<Integer> rightIDs){
 		DBColumn[] ret = new DBColumn[left.length + right.length];
 		if (left[0].isLateMat() && right[0].isLateMat()){ // if only one is late mat then regular mat instead
-			int offset = 0;
+			List<Integer> leftNewIDs = new ArrayList<>();
+			List<Integer> rightNewIDs = new ArrayList<>();
+			for (int i=0; i<leftIDs.size(); i++){
+				leftNewIDs.add(left[this.leftFieldNo].availIDs.get(leftIDs.get(i)));
+			}
+			for (int i=0; i<rightIDs.size(); i++){
+				rightNewIDs.add(right[this.rightFieldNo].availIDs.get(rightIDs.get(i)));
+			}
+			/*int offset = 0;
 			for(int i=0; i<left[this.leftFieldNo].getElemNumber(); i++){
 				if(!leftIDs.contains(i)){
 					for (int j=0; j<left.length; j++){
-						left[j].availIDs.remove(i-offset);
+						left[j].availIDs.remove(i+offset);
 					}
 					offset--;
 				}
@@ -89,17 +97,19 @@ public class Join implements ColumnarOperator {
 			for(int i=0; i<right[this.rightFieldNo].getElemNumber(); i++){
 				if(!rightIDs.contains(i)){
 					for (int j=0; j<right.length; j++){
-						right[j].availIDs.remove(i-offset);
+						right[j].availIDs.remove(i+offset);
 					}
 					offset--;
 				}
-			}
+			}*/
 
 			for (int i = 0; i < left.length; i++) {
+				left[i].availIDs = leftNewIDs;
 				ret[i] = left[i];
 			}
 
 			for (int i = 0; i < right.length; i++) {
+				right[i].availIDs = rightNewIDs;
 				ret[i + left.length] = right[i];
 			}
 			return ret;
