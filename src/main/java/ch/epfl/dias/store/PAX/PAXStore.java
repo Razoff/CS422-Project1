@@ -48,10 +48,6 @@ public class PAXStore extends Store {
 					this.pax_data.get(page_no).add_elem(data);
 				}
 			}
-
-			for (int i = 0; i < this.pax_data.size(); i++) {
-				System.out.println(this.pax_data.get(i));
-			}
 		} catch (Exception e){
 			throw new IOException();
 		}
