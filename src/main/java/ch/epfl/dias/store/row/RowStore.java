@@ -44,28 +44,32 @@ public class RowStore extends Store {
 	}
 
 	private Object[] stringToObj(String[] array) throws IOException{
-		Object[] ret = new Object[array.length];
+		try {
+			Object[] ret = new Object[array.length];
 
-		for (int i = 0; i < array.length; i++){
-			switch (schema[i]){
-				case INT:
-					ret[i] = Integer.parseInt(array[i]);
-					break;
-				case DOUBLE:
-					ret[i] = Double.parseDouble(array[i]);
-					break;
-				case STRING:
-					ret[i] = array[i]; // Field is already an int
-					break;
-				case BOOLEAN:
-					ret[i] = Boolean.parseBoolean(array[i]);
-					break;
-  				default:
-  					throw new IOException("Bad IO");
+			for (int i = 0; i < array.length; i++) {
+				switch (schema[i]) {
+					case INT:
+						ret[i] = Integer.parseInt(array[i]);
+						break;
+					case DOUBLE:
+						ret[i] = Double.parseDouble(array[i]);
+						break;
+					case STRING:
+						ret[i] = array[i]; // Field is already an int
+						break;
+					case BOOLEAN:
+						ret[i] = Boolean.parseBoolean(array[i]);
+						break;
+					default:
+						throw new IOException("Bad IO");
 
+				}
 			}
-		}
 
-		return ret;
+			return ret;
+		}catch (Exception e){
+			throw new IOException();
+		}
 	}
 }

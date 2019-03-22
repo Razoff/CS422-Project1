@@ -31,25 +31,29 @@ public class PAXStore extends Store {
 
 	@Override
 	public void load() throws IOException {
-		if(pax_data.isEmpty()){
-			add_page();
-		}
-
-		BufferedReader reader = new BufferedReader(new FileReader(this.filename));
-		Object[] data = new Object[schema.length];
-		int page_no = 0;
-
-		for (String line = reader.readLine(); line != null; line = reader.readLine()) {
-			data = line.split(this.delimiter);
-			if(!this.pax_data.get(page_no).add_elem(data)){
+		try {
+			if (pax_data.isEmpty()) {
 				add_page();
-				page_no++;
-				this.pax_data.get(page_no).add_elem(data);
 			}
-		}
 
-		for(int i = 0 ; i < this.pax_data.size() ; i++){
-			System.out.println(this.pax_data.get(i));
+			BufferedReader reader = new BufferedReader(new FileReader(this.filename));
+			Object[] data = new Object[schema.length];
+			int page_no = 0;
+
+			for (String line = reader.readLine(); line != null; line = reader.readLine()) {
+				data = line.split(this.delimiter);
+				if (!this.pax_data.get(page_no).add_elem(data)) {
+					add_page();
+					page_no++;
+					this.pax_data.get(page_no).add_elem(data);
+				}
+			}
+
+			for (int i = 0; i < this.pax_data.size(); i++) {
+				System.out.println(this.pax_data.get(i));
+			}
+		} catch (Exception e){
+			throw new IOException();
 		}
 	}
 

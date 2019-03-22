@@ -34,20 +34,24 @@ public class ColumnStore extends Store {
 
 	@Override
 	public void load() throws IOException {
-		BufferedReader reader = new BufferedReader(new FileReader(this.filename));
-		this.col_data = new DBColumn[this.schema.length];
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(this.filename));
+			this.col_data = new DBColumn[this.schema.length];
 
-		// Init array
-		for (int i=0; i < col_data.length; i++){
-			col_data[i] = new DBColumn(this.schema[i], this.lateMaterialization);
-		}
-
-		for (String line = reader.readLine(); line != null; line = reader.readLine()) {
-			String[] tuple = line.split(this.delimiter);
-
-			for (int i = 0; i < tuple.length; i++){
-				this.col_data[i].add_elem(tuple[i]);
+			// Init array
+			for (int i = 0; i < col_data.length; i++) {
+				col_data[i] = new DBColumn(this.schema[i], this.lateMaterialization);
 			}
+
+			for (String line = reader.readLine(); line != null; line = reader.readLine()) {
+				String[] tuple = line.split(this.delimiter);
+
+				for (int i = 0; i < tuple.length; i++) {
+					this.col_data[i].add_elem(tuple[i]);
+				}
+			}
+		} catch(Exception e){
+			throw new IOException();
 		}
 	}
 
