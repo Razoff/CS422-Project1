@@ -8,25 +8,36 @@ import ch.epfl.dias.store.row.DBTuple;
 
 public class Project implements VectorOperator {
 
-	// TODO: Add required structures
+	private VectorOperator child;
+	private int[] fieldNo;
 
 	public Project(VectorOperator child, int[] fieldNo) {
-		// TODO: Implement
+		this.child = child;
+		this.fieldNo = fieldNo;
 	}
 
 	@Override
 	public void open() {
-		// TODO: Implement
+		this.child.open();
 	}
 
 	@Override
 	public DBColumn[] next() {
-		// TODO: Implement
-		return null;
+		DBColumn[] elem = this.child.next();
+		if(elem[0].eof) {
+			return new DBColumn[]{new DBColumn()};
+		}
+
+		DBColumn[] ret = new DBColumn[this.fieldNo.length];
+
+		for (int i = 0; i < this.fieldNo.length; i++) {
+			ret[i] = elem[this.fieldNo[i]];
+		}
+		return ret;
 	}
 
 	@Override
 	public void close() {
-		// TODO: Implement
+		this.child.close();
 	}
 }
