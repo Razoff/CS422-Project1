@@ -53,12 +53,16 @@ public class ColumnStore extends Store {
 
 	@Override
 	public DBColumn[] getColumns(int[] columnsToGet) {
-		DBColumn[] ret = new DBColumn[columnsToGet.length];
-		for(int i=0; i < columnsToGet.length; i++){
-			ret[i] = this.col_data[columnsToGet[i]];
-		}
+		if (columnsToGet == null){
+			return this.col_data;
+		}else {
+			DBColumn[] ret = new DBColumn[columnsToGet.length];
+			for (int i = 0; i < columnsToGet.length; i++) {
+				ret[i] = this.col_data[columnsToGet[i]];
+			}
 
-		return ret;
+			return ret;
+		}
 	}
 
 	public DataType[] getSchema() {
