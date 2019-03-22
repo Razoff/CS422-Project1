@@ -113,4 +113,57 @@ public class VectorTest {
 		assertTrue(output == 3);
 	}
 
+	@Test
+	public void joinTest1() {
+		/*
+		 * SELECT COUNT(*) FROM order JOIN lineitem ON (o_orderkey = orderkey)
+		 * WHERE orderkey = 3;
+		 */
+
+		ch.epfl.dias.ops.vector.Scan scanOrder = new ch.epfl.dias.ops.vector.Scan(columnstoreOrder, standardVectorsize);
+		ch.epfl.dias.ops.vector.Scan scanLineitem = new ch.epfl.dias.ops.vector.Scan(columnstoreLineItem,standardVectorsize);
+
+		/* Filtering on both sides */
+		ch.epfl.dias.ops.vector.Select selOrder = new ch.epfl.dias.ops.vector.Select(scanOrder, BinaryOp.EQ, 0, 3);
+		ch.epfl.dias.ops.vector.Select selLineitem = new ch.epfl.dias.ops.vector.Select(scanLineitem, BinaryOp.EQ, 0, 3);
+
+		ch.epfl.dias.ops.vector.Join join = new ch.epfl.dias.ops.vector.Join(selOrder, selLineitem, 0, 0);
+		ch.epfl.dias.ops.vector.ProjectAggregate agg = new ch.epfl.dias.ops.vector.ProjectAggregate(join, Aggregate.COUNT,
+				DataType.INT, 0);
+
+		DBColumn[] result = agg.next();
+
+		// This query should return only one result
+		int output = result[0].getAsInteger()[0];
+
+		assertTrue(output == 3);
+	}
+
+	@Test
+	public void joinTest2() {
+		/*
+		 * SELECT COUNT(*) FROM lineitem JOIN order ON (o_orderkey = orderkey)
+		 * WHERE orderkey = 3;
+		 */
+
+		ch.epfl.dias.ops.vector.Scan scanOrder = new ch.epfl.dias.ops.vector.Scan(columnstoreOrder,standardVectorsize);
+		ch.epfl.dias.ops.vector.Scan scanLineitem = new ch.epfl.dias.ops.vector.Scan(columnstoreLineItem,standardVectorsize);
+
+		/* Filtering on both sides */
+		ch.epfl.dias.ops.vector.Select selOrder = new ch.epfl.dias.ops.vector.Select(scanOrder, BinaryOp.EQ, 0, 3);
+		ch.epfl.dias.ops.vector.Select selLineitem = new ch.epfl.dias.ops.vector.Select(scanLineitem, BinaryOp.EQ, 0, 3);
+
+		ch.epfl.dias.ops.vector.Join join = new ch.epfl.dias.ops.vector.Join(selLineitem, selOrder, 0, 0);
+		ch.epfl.dias.ops.vector.ProjectAggregate agg = new ch.epfl.dias.ops.vector.ProjectAggregate(join, Aggregate.COUNT,
+				DataType.INT, 0);
+
+		DBColumn[] result = agg.next();
+
+		// This query should return only one result
+		int output = result[0].getAsInteger()[0];
+
+		assertTrue(output == 3);
+	}
+
+
 }
