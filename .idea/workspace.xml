@@ -2,11 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea994284-33d9-4561-b744-751ae69bf81d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/columnar/Join.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/columnar/Join.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/columnar/Select.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/columnar/Select.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ch/epfl/dias/ops/columnar/ColumnarTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ch/epfl/dias/ops/columnar/ColumnarTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/vector/Join.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/vector/Join.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/vector/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/vector/Project.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/vector/ProjectAggregate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/vector/ProjectAggregate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/vector/Scan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/vector/Scan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/vector/Select.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/vector/Select.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/epfl/dias/store/PAX/PAXStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/epfl/dias/store/PAX/PAXStore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/epfl/dias/store/column/ColumnStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/epfl/dias/store/column/ColumnStore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/epfl/dias/store/row/RowStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/epfl/dias/store/row/RowStore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ch/epfl/dias/ops/vector/VectorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ch/epfl/dias/ops/vector/VectorTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,11 +24,86 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/columnar/ProjectAggregate.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ch/epfl/dias/ops/columnar/ColumnarTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="428">
+              <caret line="184" selection-start-line="133" selection-end-line="184" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ch/epfl/dias/ops/vector/VectorTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="133" selection-start-line="133" selection-end-line="133" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/vector/Select.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="36" column="42" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
+              <folding>
+                <element signature="e#2184#2185#0" expanded="true" />
+                <element signature="e#2209#2210#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/vector/ProjectAggregate.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="97" selection-start-line="97" selection-end-line="97" />
+              <folding>
+                <element signature="e#587#588#0" expanded="true" />
+                <element signature="e#611#612#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/store/PAX/PAXStore.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="660">
+              <caret line="55" column="36" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="36" />
+              <folding>
+                <element signature="e#1437#1438#0" expanded="true" />
+                <element signature="e#1509#1510#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/store/row/RowStore.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="555">
+              <caret line="71" column="36" selection-start-line="71" selection-start-column="36" selection-end-line="71" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/vector/Join.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="64" column="18" selection-start-line="64" selection-start-column="18" selection-end-line="64" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/columnar/Join.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="347">
+              <caret line="121" column="5" lean-forward="true" selection-start-line="26" selection-start-column="4" selection-end-line="121" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -31,7 +113,12 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>Sys</find>
+      <find>for</find>
+      <find>columnar</find>
     </findStrings>
+    <replaceStrings>
+      <replace>vector</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -40,14 +127,22 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/columnar/ColumnarOperator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ch/epfl/dias/store/column/ColumnStore.java" />
         <option value="$PROJECT_DIR$/src/main/java/ch/epfl/dias/store/column/DBColumn.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/columnar/Scan.java" />
         <option value="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/columnar/Project.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ch/epfl/dias/ops/columnar/ColumnarTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/columnar/Select.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/columnar/Join.java" />
         <option value="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/columnar/ProjectAggregate.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/epfl/dias/ops/columnar/ColumnarTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/columnar/Join.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/columnar/Select.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/columnar/Scan.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/vector/Scan.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/vector/Project.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/epfl/dias/store/column/ColumnStore.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/epfl/dias/store/PAX/PAXStore.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/epfl/dias/store/row/RowStore.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/vector/Select.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/epfl/dias/ops/vector/VectorTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/vector/ProjectAggregate.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/vector/Join.java" />
       </list>
     </option>
   </component>
@@ -122,6 +217,16 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="dias" type="462c0819:PsiDirectoryNode" />
               <item name="ops" type="462c0819:PsiDirectoryNode" />
+              <item name="vector" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cs422-project1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS422-Project1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="dias" type="462c0819:PsiDirectoryNode" />
+              <item name="ops" type="462c0819:PsiDirectoryNode" />
               <item name="volcano" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -142,6 +247,26 @@
               <item name="dias" type="462c0819:PsiDirectoryNode" />
               <item name="store" type="462c0819:PsiDirectoryNode" />
               <item name="column" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cs422-project1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS422-Project1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="dias" type="462c0819:PsiDirectoryNode" />
+              <item name="store" type="462c0819:PsiDirectoryNode" />
+              <item name="PAX" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cs422-project1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS422-Project1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="dias" type="462c0819:PsiDirectoryNode" />
+              <item name="store" type="462c0819:PsiDirectoryNode" />
+              <item name="row" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cs422-project1" type="b2602c69:ProjectViewProjectNode" />
@@ -200,7 +325,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553261904690" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553272703292" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RunDashboard">
@@ -215,7 +340,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ColumnarTest">
+  <component name="RunManager" selected="JUnit.VectorTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ch.epfl.dias.Main" />
       <module name="cs422-project1" />
@@ -260,8 +385,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="VectorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cs422-project1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch.epfl.dias.ops.vector.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ch.epfl.dias.ops.vector" />
+      <option name="MAIN_CLASS_NAME" value="ch.epfl.dias.ops.vector.VectorTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.VectorTest" />
         <item itemvalue="JUnit.ColumnarTest" />
         <item itemvalue="JUnit.ColumnarTest.spTestData" />
         <item itemvalue="Application.Main" />
@@ -282,42 +423,42 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ColumnarTest_spTestData - 2019.03.22 at 12h 32m 18s.xml">
-      <configuration name="ColumnarTest.spTestData" configurationId="JUnit" />
+    <history-entry file="VectorTest - 2019.03.22 at 17h 00m 24s.xml">
+      <configuration name="VectorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ColumnarTest_spTestData - 2019.03.22 at 12h 39m 55s.xml">
-      <configuration name="ColumnarTest.spTestData" configurationId="JUnit" />
+    <history-entry file="VectorTest - 2019.03.22 at 17h 05m 06s.xml">
+      <configuration name="VectorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ColumnarTest_spTestData - 2019.03.22 at 12h 42m 58s.xml">
-      <configuration name="ColumnarTest.spTestData" configurationId="JUnit" />
+    <history-entry file="VectorTest - 2019.03.22 at 17h 06m 12s.xml">
+      <configuration name="VectorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ColumnarTest_spTestData - 2019.03.22 at 12h 43m 09s.xml">
-      <configuration name="ColumnarTest.spTestData" configurationId="JUnit" />
+    <history-entry file="VectorTest - 2019.03.22 at 17h 07m 51s.xml">
+      <configuration name="VectorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ColumnarTest - 2019.03.22 at 12h 43m 46s.xml">
-      <configuration name="ColumnarTest" configurationId="JUnit" />
+    <history-entry file="VectorTest - 2019.03.22 at 17h 10m 20s.xml">
+      <configuration name="VectorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ColumnarTest - 2019.03.22 at 14h 01m 32s.xml">
-      <configuration name="ColumnarTest" configurationId="JUnit" />
+    <history-entry file="VectorTest - 2019.03.22 at 17h 10m 39s.xml">
+      <configuration name="VectorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ColumnarTest - 2019.03.22 at 14h 34m 16s.xml">
-      <configuration name="ColumnarTest" configurationId="JUnit" />
+    <history-entry file="VectorTest - 2019.03.22 at 17h 10m 49s.xml">
+      <configuration name="VectorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ColumnarTest - 2019.03.22 at 14h 34m 19s.xml">
-      <configuration name="ColumnarTest" configurationId="JUnit" />
+    <history-entry file="VectorTest - 2019.03.22 at 17h 31m 18s.xml">
+      <configuration name="VectorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ColumnarTest - 2019.03.22 at 14h 35m 38s.xml">
-      <configuration name="ColumnarTest" configurationId="JUnit" />
+    <history-entry file="VectorTest - 2019.03.22 at 17h 31m 21s.xml">
+      <configuration name="VectorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ColumnarTest - 2019.03.22 at 14h 36m 15s.xml">
-      <configuration name="ColumnarTest" configurationId="JUnit" />
+    <history-entry file="VectorTest - 2019.03.22 at 17h 33m 09s.xml">
+      <configuration name="VectorTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1600" height="873" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -325,16 +466,16 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.26171875" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.3997396" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3294271" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.26171875" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3138021" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32983193" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3294271" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -346,16 +487,6 @@
     </layout>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/columnar/Join.java</url>
-          <line>114</line>
-          <properties />
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
         <watch expression="current_state[2].availIDs.get(1)" />
@@ -374,44 +505,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/volcano/Select.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/volcano/HashJoin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1403">
-          <caret line="7" column="22" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/columnar/Project.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/columnar/Scan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
-          <folding>
-            <element signature="e#405#406#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/store/column/ColumnStore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
         </state>
       </provider>
     </entry>
@@ -458,9 +551,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/columnar/Scan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+          <folding>
+            <element signature="e#405#406#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/store/column/DBColumn.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
+        <state relative-caret-position="1875">
           <caret line="138" column="19" selection-start-line="138" selection-start-column="19" selection-end-line="138" selection-end-column="19" />
           <folding>
             <element signature="e#2142#2143#0" expanded="true" />
@@ -469,24 +572,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ch/epfl/dias/ops/columnar/ColumnarTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/volcano/Select.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1170">
-          <caret line="68" column="80" lean-forward="true" selection-start-line="68" selection-start-column="80" selection-end-line="68" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/columnar/Select.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="100" column="60" selection-start-line="100" selection-start-column="60" selection-end-line="100" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/columnar/Join.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="114" selection-start-line="114" selection-end-line="114" />
+        <state relative-caret-position="-30">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -497,10 +586,146 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/columnar/Select.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="15" column="9" selection-start-line="15" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/columnar/Project.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="12" column="31" lean-forward="true" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/vector/Project.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="35" column="19" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
+          <folding>
+            <element signature="e#466#467#0" expanded="true" />
+            <element signature="e#490#491#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/vector/Scan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="45" column="73" lean-forward="true" selection-start-line="45" selection-start-column="73" selection-end-line="45" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/columnar/ProjectAggregate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="720">
+          <caret line="80" column="5" lean-forward="true" selection-start-line="22" selection-start-column="8" selection-end-line="80" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/vector/VectorOperator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/store/column/ColumnStore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="53" column="36" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="36" />
+          <folding>
+            <element signature="e#1952#1953#0" expanded="true" />
+            <element signature="e#2010#2011#0" expanded="true" />
+            <element signature="e#2086#2087#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/store/PAX/PAXStore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="55" column="36" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="36" />
+          <folding>
+            <element signature="e#1437#1438#0" expanded="true" />
+            <element signature="e#1509#1510#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/store/row/RowStore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="71" column="36" selection-start-line="71" selection-start-column="36" selection-end-line="71" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/columnar/Join.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="121" column="5" lean-forward="true" selection-start-line="26" selection-start-column="4" selection-end-line="121" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/vector/Select.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="36" column="42" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
+          <folding>
+            <element signature="e#2184#2185#0" expanded="true" />
+            <element signature="e#2209#2210#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/volcano/HashJoin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/volcano/Scan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-75">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/epfl/dias/ops/columnar/ColumnarTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="184" selection-start-line="133" selection-end-line="184" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/epfl/dias/ops/vector/VectorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="133" selection-start-line="133" selection-end-line="133" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/vector/ProjectAggregate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="97" selection-start-line="97" selection-end-line="97" />
+          <folding>
+            <element signature="e#587#588#0" expanded="true" />
+            <element signature="e#611#612#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/epfl/dias/ops/vector/Join.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="64" column="18" selection-start-line="64" selection-start-column="18" selection-end-line="64" selection-end-column="18" />
         </state>
       </provider>
     </entry>
