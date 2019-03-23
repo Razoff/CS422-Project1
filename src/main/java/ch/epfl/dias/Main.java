@@ -2,12 +2,16 @@ package ch.epfl.dias;
 
 import ch.epfl.dias.ops.Aggregate;
 import ch.epfl.dias.ops.BinaryOp;
+import ch.epfl.dias.ops.volcano.HashJoin;
+import ch.epfl.dias.ops.volcano.ProjectAggregate;
+import ch.epfl.dias.ops.volcano.Select;
 import ch.epfl.dias.store.DataType;
 import ch.epfl.dias.store.PAX.PAXStore;
 import ch.epfl.dias.store.column.ColumnStore;
 import ch.epfl.dias.store.column.DBColumn;
 import ch.epfl.dias.store.row.DBTuple;
 import ch.epfl.dias.store.row.RowStore;
+import java.util.concurrent.TimeUnit;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -119,6 +123,18 @@ public class Main {
 			rowstoreLineItem.load();
 			System.out.println("END");
 
+			System.out.println("Query 1 :");
+			System.out.println(queryOneRow(rowstoreLineItem));
+			System.out.println("Query 2 :");
+			System.out.println(queryTwoRow(rowstoreLineItem));
+			System.out.println("Query 3 :");
+			System.out.println(queryThreeRow(rowstoreLineItem));
+			System.out.println("Query 4 :");
+			System.out.println(queryFourRow(rowstoreLineItem));
+			System.out.println("Query 5 :");
+			System.out.println(queryFiveRow(rowstoreLineItem, rowstoreOrder));
+
+
 		}catch (Exception e){
 			System.out.println(e);
 		}finally {
@@ -137,6 +153,8 @@ public class Main {
 			paxstoreLineItem = new PAXStore(lineitemSchema, "input/lineitem_big.csv", "\\|", nb_line_tuple);
 			paxstoreLineItem.load();
 			System.out.println("END");
+
+
 
 		}catch (Exception e){
 			System.out.println(e);
@@ -166,4 +184,80 @@ public class Main {
 		}
 		System.out.println("Finished");
 	}
+	static public long queryOneRow(RowStore lineItem){
+		// Select SELECT L_ORDERKEY, L_quantity FROM LINE_ITEM WHERE col4 == 6
+		ch.epfl.dias.ops.volcano.Scan scan = new ch.epfl.dias.ops.volcano.Scan(lineItem);
+		ch.epfl.dias.ops.volcano.Select sel = new ch.epfl.dias.ops.volcano.Select(scan, BinaryOp.EQ, 3, 6);
+		ch.epfl.dias.ops.volcano.Project prj = new ch.epfl.dias.ops.volcano.Project(sel, new int[]{0,4});
+
+		long startTime = System.nanoTime();
+		prj.open();
+		DBTuple result = prj.next();
+		System.out.println(result);
+		long endTime = System.nanoTime();
+		return (endTime - startTime);
+	}
+
+	static public long queryTwoRow(RowStore lineItem){
+		// Select SELECT L_ORDERKEY, L_quantity FROM LINE_ITEM WHERE col4 > 6
+		ch.epfl.dias.ops.volcano.Scan scan = new ch.epfl.dias.ops.volcano.Scan(lineItem);
+		ch.epfl.dias.ops.volcano.Select sel = new ch.epfl.dias.ops.volcano.Select(scan, BinaryOp.GT, 3, 6);
+		ch.epfl.dias.ops.volcano.Project prj = new ch.epfl.dias.ops.volcano.Project(sel, new int[]{0,4});
+
+		long startTime = System.nanoTime();
+		prj.open();
+		DBTuple result = prj.next();
+		System.out.println(result);
+		long endTime = System.nanoTime();
+		return (endTime - startTime);
+	}
+
+	static public long queryThreeRow(RowStore lineItem){
+		// SELECT COUNT (*) FROM LINE_ITEM
+		ch.epfl.dias.ops.volcano.Scan scan = new ch.epfl.dias.ops.volcano.Scan(lineItem);
+		ch.epfl.dias.ops.volcano.ProjectAggregate agg = new ch.epfl.dias.ops.volcano.ProjectAggregate(scan, Aggregate.COUNT, DataType.INT, 3);
+
+		long startTime = System.nanoTime();
+		agg.open();
+		DBTuple result = agg.next();
+		System.out.println(result);
+		long endTime = System.nanoTime();
+		return (endTime - startTime);
+	}
+
+	static public long queryFourRow(RowStore lineItem){
+		// Select SELECT L_ORDERKEY, L_quantity FROM LINE_ITEM WHERE col4 > 6
+		ch.epfl.dias.ops.volcano.Scan scan = new ch.epfl.dias.ops.volcano.Scan(lineItem);
+		ch.epfl.dias.ops.volcano.Select sel = new ch.epfl.dias.ops.volcano.Select(scan, BinaryOp.GE, 3, 6);
+		ch.epfl.dias.ops.volcano.ProjectAggregate agg = new ch.epfl.dias.ops.volcano.ProjectAggregate(sel, Aggregate.AVG, DataType.DOUBLE, 4);
+
+		long startTime = System.nanoTime();
+		agg.open();
+		DBTuple result = agg.next();
+		System.out.println(result);
+		long endTime = System.nanoTime();
+		return (endTime - startTime);
+	}
+
+	static public long queryFiveRow(RowStore lineItem, RowStore orders){
+		/* SELECT COUNT(*) FROM order JOIN lineitem ON (o_orderkey = orderkey) WHERE orderkey = 3;*/
+
+		ch.epfl.dias.ops.volcano.Scan scanOrder = new ch.epfl.dias.ops.volcano.Scan(orders);
+		ch.epfl.dias.ops.volcano.Scan scanLineitem = new ch.epfl.dias.ops.volcano.Scan(lineItem);
+
+		/*Filtering on both sides */
+		Select selOrder = new Select(scanOrder, BinaryOp.EQ,0,3);
+		Select selLineitem = new Select(scanLineitem, BinaryOp.EQ,0,3);
+
+		HashJoin join = new HashJoin(selOrder,selLineitem,0,0);
+		ProjectAggregate agg = new ProjectAggregate(join,Aggregate.COUNT, DataType.INT,0);
+
+		long startTime = System.nanoTime();
+		agg.open();
+		DBTuple result = agg.next();
+		System.out.println(result);
+		long endTime = System.nanoTime();
+		return (endTime - startTime);
+	}
+
 }
