@@ -41,12 +41,7 @@ public class Select implements VectorOperator {
 		}
 
 		DBColumn elem = child_comp[this.fieldNo];
-		Integer[] column_int;
-		if(elem.isLateMat()){
-			column_int = elem.lazyEval().getAsInteger();
-		}else {
-			column_int = elem.getAsInteger();
-		}
+		Integer[] column_int = elem.getAsInteger();
 
 		switch (this.op){
 			case EQ:
