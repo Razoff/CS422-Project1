@@ -99,8 +99,8 @@ public class Main {
 
 		PAXStore paxstoreOrder;
 		PAXStore paxstoreLineItem;
-		int nb_order_tuple = 200;
-		int nb_line_tuple = 200;
+		int nb_order_tuple = 2000;
+		int nb_line_tuple = 2000;
 
 		ColumnStore columnstoreOrder;
 		ColumnStore columnstoreLineItem;
@@ -134,7 +134,6 @@ public class Main {
 			System.out.println("Query 5 :");
 			System.out.println(queryFiveRow(rowstoreLineItem, rowstoreOrder));
 
-
 		}catch (Exception e){
 			System.out.println(e);
 		}finally {
@@ -146,7 +145,7 @@ public class Main {
 		try {
 			System.out.println("Pax store order load");
 			paxstoreOrder = new PAXStore(orderSchema, "input/orders_big.csv", "\\|", nb_order_tuple);
-			paxstoreOrder.load();
+			/*paxstoreOrder.load();*/
 			System.out.println("END");
 
 			System.out.println("Pax store line_item load");
@@ -186,6 +185,18 @@ public class Main {
 			columnstoreLineItem.load();
 			System.out.println("END");
 
+			System.out.println("Vector query");
+			System.out.println("Query 1 :");
+			System.out.println(queryOneVec(columnstoreLineItem));
+			System.out.println("Query 2 :");
+			System.out.println(queryTwoVec(columnstoreLineItem));
+			System.out.println("Query 3 :");
+			System.out.println(queryThreeVec(columnstoreLineItem));
+			System.out.println("Query 4 :");
+			System.out.println(queryFourVec(columnstoreLineItem));
+			System.out.println("Query 5 :");
+			System.out.println(queryFiveVec(columnstoreLineItem, columnstoreOrder));
+
 			System.out.println("Columnar query");
 			System.out.println("Query 1 :");
 			System.out.println(queryOneCol(columnstoreLineItem));
@@ -198,17 +209,6 @@ public class Main {
 			System.out.println("Query 5 :");
 			System.out.println(queryFiveCol(columnstoreLineItem, columnstoreOrder));
 
-			System.out.println("Vector query");
-			System.out.println("Query 1 :");
-			System.out.println(queryOneVec(columnstoreLineItem));
-			System.out.println("Query 2 :");
-			System.out.println(queryTwoVec(columnstoreLineItem));
-			System.out.println("Query 3 :");
-			System.out.println(queryThreeVec(columnstoreLineItem));
-			System.out.println("Query 4 :");
-			System.out.println(queryFourVec(columnstoreLineItem));
-			System.out.println("Query 5 :");
-			System.out.println(queryFiveVec(columnstoreLineItem, columnstoreOrder));
 
 		}catch (Exception e){
 			System.out.println(e);
@@ -437,7 +437,7 @@ public class Main {
 	// VECTOR QUERY
 	static public long queryOneVec(ColumnStore lineItem){
 		// Select SELECT L_ORDERKEY, L_quantity FROM LINE_ITEM WHERE col4 == 6
-		ch.epfl.dias.ops.vector.Scan scan = new ch.epfl.dias.ops.vector.Scan(lineItem,500);
+		ch.epfl.dias.ops.vector.Scan scan = new ch.epfl.dias.ops.vector.Scan(lineItem,5000);
 		ch.epfl.dias.ops.vector.Select sel = new ch.epfl.dias.ops.vector.Select(scan, BinaryOp.EQ, 3, 6);
 		ch.epfl.dias.ops.vector.Project prj = new ch.epfl.dias.ops.vector.Project(sel, new int[]{0,4});
 
@@ -451,7 +451,7 @@ public class Main {
 
 	static public long queryTwoVec(ColumnStore lineItem){
 		// Select SELECT L_ORDERKEY, L_quantity FROM LINE_ITEM WHERE col4 > 6
-		ch.epfl.dias.ops.vector.Scan scan = new ch.epfl.dias.ops.vector.Scan(lineItem,500);
+		ch.epfl.dias.ops.vector.Scan scan = new ch.epfl.dias.ops.vector.Scan(lineItem,5000);
 		ch.epfl.dias.ops.vector.Select sel = new ch.epfl.dias.ops.vector.Select(scan, BinaryOp.GT, 3, 6);
 		ch.epfl.dias.ops.vector.Project prj = new ch.epfl.dias.ops.vector.Project(sel, new int[]{0,4});
 
@@ -465,7 +465,7 @@ public class Main {
 
 	static public long queryThreeVec(ColumnStore lineItem){
 		// SELECT COUNT (*) FROM LINE_ITEM
-		ch.epfl.dias.ops.vector.Scan scan = new ch.epfl.dias.ops.vector.Scan(lineItem,500);
+		ch.epfl.dias.ops.vector.Scan scan = new ch.epfl.dias.ops.vector.Scan(lineItem,5000);
 		ch.epfl.dias.ops.vector.ProjectAggregate agg = new ch.epfl.dias.ops.vector.ProjectAggregate(scan, Aggregate.COUNT, DataType.INT, 3);
 
 		long startTime = System.nanoTime();
@@ -478,7 +478,7 @@ public class Main {
 
 	static public long queryFourVec(ColumnStore lineItem){
 		// Select SELECT L_ORDERKEY, L_quantity FROM LINE_ITEM WHERE col4 > 6
-		ch.epfl.dias.ops.vector.Scan scan = new ch.epfl.dias.ops.vector.Scan(lineItem, 500);
+		ch.epfl.dias.ops.vector.Scan scan = new ch.epfl.dias.ops.vector.Scan(lineItem, 5000);
 		ch.epfl.dias.ops.vector.Select sel = new ch.epfl.dias.ops.vector.Select(scan, BinaryOp.GE, 3, 6);
 		ch.epfl.dias.ops.vector.ProjectAggregate agg = new ch.epfl.dias.ops.vector.ProjectAggregate(sel, Aggregate.AVG, DataType.DOUBLE, 4);
 
@@ -493,8 +493,8 @@ public class Main {
 	static public long queryFiveVec(ColumnStore lineItem, ColumnStore orders){
 		// SELECT COUNT(*) FROM order JOIN lineitem ON (o_orderkey = orderkey)
 
-		ch.epfl.dias.ops.vector.Scan scanOrder = new ch.epfl.dias.ops.vector.Scan(orders, 500);
-		ch.epfl.dias.ops.vector.Scan scanLineitem = new ch.epfl.dias.ops.vector.Scan(lineItem, 500);
+		ch.epfl.dias.ops.vector.Scan scanOrder = new ch.epfl.dias.ops.vector.Scan(orders, 5000);
+		ch.epfl.dias.ops.vector.Scan scanLineitem = new ch.epfl.dias.ops.vector.Scan(lineItem, 5000);
 
 		ch.epfl.dias.ops.vector.Join join = new ch.epfl.dias.ops.vector.Join(scanLineitem, scanOrder, 0, 0);
 		ch.epfl.dias.ops.vector.ProjectAggregate agg = new ch.epfl.dias.ops.vector.ProjectAggregate(join, Aggregate.COUNT, DataType.INT, 0);
