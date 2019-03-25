@@ -16,9 +16,14 @@ public class Project implements ColumnarOperator {
 	public DBColumn[] execute() {
 		DBColumn[] elem = this.child.execute();
 		DBColumn[] ret = new DBColumn[this.columns.length];
-
-		for (int i = 0; i < this.columns.length; i++) {
-			ret[i] = elem[this.columns[i]];
+		if (elem[0].isLateMat()){
+			for (int i = 0; i < this.columns.length; i++){
+				ret[i] = elem[this.columns[i]].lazyEval();
+			}
+		}else {
+			for (int i = 0; i < this.columns.length; i++) {
+				ret[i] = elem[this.columns[i]];
+			}
 		}
 		return ret;
 	}
