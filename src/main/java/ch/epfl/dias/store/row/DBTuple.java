@@ -26,19 +26,19 @@ public class DBTuple {
 	 * @return cast of field
 	 */
 	public Integer getFieldAsInt(int fieldNo) {
-		return (Integer) fields[fieldNo];
+		return Integer.parseInt(fields[fieldNo].toString());
 	}
 
 	public Double getFieldAsDouble(int fieldNo) {
-		return (Double) fields[fieldNo];
+		return Double.parseDouble(fields[fieldNo].toString());
 	}
 
 	public Boolean getFieldAsBoolean(int fieldNo) {
-		return (Boolean) fields[fieldNo];
+		return Boolean.parseBoolean(fields[fieldNo].toString());
 	}
 
 	public String getFieldAsString(int fieldNo) {
-		return (String) fields[fieldNo];
+		return fields[fieldNo].toString();
 	}
 
 	public String getFieldAsCastString(int fieldNo) {
